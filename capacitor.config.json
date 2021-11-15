@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Kirche Unterseen",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

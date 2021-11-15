@@ -1,0 +1,8 @@
+{
+  "name": "Kirche Unterseen",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "ba240296"
+}
