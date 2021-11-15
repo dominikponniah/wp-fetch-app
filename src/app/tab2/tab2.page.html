@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Veranstaltungskalender
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,42 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Veranstaltungskalender</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card mode="ios" class="importDisclaimer">
+    <ion-card-content>
+      Du kannst sämtliche Veranstaltungen, welche aktuell bekannt sind in deinen persönlichen Kalender importieren.
+      Drücke unten auf den Button um die Kalenderdatei herunterzuladen. Öffne sie anschliessend und importiere sie.
+      <ion-button (click)="importToCalendar()">In meinen Kalender importieren</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="events !== undefined">
+
+    <div *ngFor="let event of events.events;">
+      <ion-card mode="ios">
+        <ion-card-header>
+          <ion-card-title>{{ event.start_date_details.day }}</ion-card-title>
+          <ion-card-subtitle>{{ event.start_date | date: 'MMMM yyyy'}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <h2 [innerHTML]="event.title"></h2>
+          <ion-grid style="text-align: center;">
+            <ion-row>
+              <ion-col>
+                <ion-icon (click)="showEventDetails(event)" name="information-circle-outline"></ion-icon>
+              </ion-col>
+              <ion-col *ngIf="event.venue.id !== undefined">
+                <ion-icon (click)="showEventRoute(event)" name="navigate-outline"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
 </ion-content>

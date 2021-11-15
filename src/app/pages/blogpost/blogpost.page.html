@@ -1,0 +1,34 @@
+<ion-header *ngIf="postContents !== undefined">
+  <ion-toolbar>
+    <ion-title>{{ postContents.title.rendered }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card mode="ios">
+    <ion-card-content>
+
+      <div class="postContents" *ngIf="postContents !== undefined" [innerHTML]="postContents.content.rendered">
+      </div>
+      <div class="postContents centered" *ngIf="postContents == undefined">
+        <ion-spinner></ion-spinner>
+        <p>Bitte warten...</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card mode="ios" class="metadata" *ngIf="postContents !== undefined">
+    <ion-card-content class="metadatabox">
+      Gepostet am {{ postContents.date | date: 'dd.MM.yyyy'}} um {{ postContents.date | date: 'HH:mm'}} von {{
+      postContents.author.name }}. <a (click)="visitOriginalPost()" target="blank">Zum Originalbeitrag</a>.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" (click)="closePost()">
+    <ion-fab-button>
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

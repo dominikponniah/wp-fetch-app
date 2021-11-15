@@ -1,0 +1,16 @@
+.visitCollection {
+    text-align: center;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    ion-col {
+        min-width: 33%;
+        max-width: 33%;
+        min-height: 20vw;
+        max-height: 20vw;
+
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
